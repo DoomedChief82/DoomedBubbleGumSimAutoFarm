@@ -1,0 +1,100 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local AutoSell = Instance.new("TextButton")
+local AutoBlow = Instance.new("TextButton")
+local Title = Instance.new("TextLabel")
+local Close = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(82, 255, 88)
+Frame.BorderColor3 = Color3.fromRGB(92, 57, 167)
+Frame.BorderSizePixel = 5
+Frame.Position = UDim2.new(0.319923371, 0, 0.140049145, 0)
+Frame.Size = UDim2.new(0, 446, 0, 417)
+Frame.Active = true
+Frame.Draggable = true
+
+AutoSell.Name = "AutoSell"
+AutoSell.Parent = Frame
+AutoSell.BackgroundColor3 = Color3.fromRGB(3, 209, 255)
+AutoSell.BorderColor3 = Color3.fromRGB(209, 192, 5)
+AutoSell.BorderSizePixel = 3
+AutoSell.Position = UDim2.new(0.515695095, 0, 0.745803356, 0)
+AutoSell.Size = UDim2.new(0, 200, 0, 85)
+AutoSell.Font = Enum.Font.SpecialElite
+AutoSell.Text = "Auto Sell"
+AutoSell.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoSell.TextScaled = true
+AutoSell.TextSize = 14.000
+AutoSell.TextWrapped = true
+AutoSell.MouseButton1Down:connect(function()
+	while true do
+
+		local args = {
+			[1] = "SellBubble",
+			[2] = "Sell"
+		}
+
+		game:GetService("ReplicatedStorage").NetworkRemoteEvent:FireServer(unpack(args))
+
+		wait(4)
+	end
+end)
+
+AutoBlow.Name = "AutoBlow"
+AutoBlow.Parent = Frame
+AutoBlow.BackgroundColor3 = Color3.fromRGB(3, 209, 255)
+AutoBlow.BorderColor3 = Color3.fromRGB(209, 192, 5)
+AutoBlow.BorderSizePixel = 3
+AutoBlow.Position = UDim2.new(0.0358744413, 0, 0.745803356, 0)
+AutoBlow.Size = UDim2.new(0, 200, 0, 85)
+AutoBlow.Font = Enum.Font.SpecialElite
+AutoBlow.Text = "Auto Blow Bubble"
+AutoBlow.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoBlow.TextScaled = true
+AutoBlow.TextSize = 14.000
+AutoBlow.TextWrapped = true
+AutoBlow.MouseButton1Down:connect(function()
+	while true do
+
+		local args = {
+			[1] = "BlowBubble"
+		}
+
+		game:GetService("ReplicatedStorage").NetworkRemoteEvent:FireServer(unpack(args))
+
+		wait(0.1)
+	end
+end)
+
+Title.Name = "Title"
+Title.Parent = Frame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.15470852, 0, 0.06954436, 0)
+Title.Size = UDim2.new(0, 308, 0, 141)
+Title.Font = Enum.Font.SciFi
+Title.Text = "Doomed BubbleGum Sim AutoFarm"
+Title.TextColor3 = Color3.fromRGB(114, 118, 170)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+Close.Name = "Close"
+Close.Parent = Frame
+Close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 2
+Close.Position = UDim2.new(0.874439478, 0, 0.038369298, 0)
+Close.Size = UDim2.new(0, 40, 0, 40)
+Close.Font = Enum.Font.Roboto
+Close.Text = "Close"
+Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+Close.TextSize = 16.000
+Close.TextWrapped = true
+Close.MouseButton1Down:connect(function()
+	Frame.Visible = false
+end)
